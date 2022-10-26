@@ -59,17 +59,26 @@
     </div>
     <script>
         function todayDate(){
-      
-        let now= new Date ();
+      let dayIndex=now.getDay();
+
         let Days=['Sun','Mon','Tue','Wed','Thur','Fri','Sart']
         let day=now.getDay([Days]);
-        let hour=now.getHours();
+        let hours=now.getHours();
+        if(hours<10){
+            hours=`0${hour}`;
+        }
         let mins=now.getMinutes();
-        let today= `${day} ${hour}:${mins}`
-        document.querySelector("#date").innerHTML=today
-              
+        if(mins<10){
+            mins=`0${mins}`;
+        }
+       
+        return `${day} ${hours}:${mins}`
+ today.innerHTML=`${days[dayIndex]} ${hours}:${mins}`
     }
-    document.querySelector("body").onload(todayDate)
+    let today=  document.querySelector("#date")
+    today=new Date();
+    today.innerHTML=formatDate(todayDate)
+
 
 
 
@@ -124,5 +133,6 @@ ul li{
     list-style: none;
 }
       </style>
+      <script src="index.js"></script>
 </body>
 </html>
